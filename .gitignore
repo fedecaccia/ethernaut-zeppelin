@@ -2,3 +2,4 @@
 */build/*
 node_modules/*
 myInfuraToken.txt
+package-lock.json
