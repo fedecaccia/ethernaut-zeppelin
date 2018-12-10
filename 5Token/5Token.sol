@@ -1,0 +1,30 @@
+pragma solidity ^0.4.18;
+
+contract Token {
+
+    mapping(address => uint) balances;
+    uint public totalSupply;
+
+    function Token(uint _initialSupply) public {
+        balances[msg.sender] = totalSupply = _initialSupply;
+    }
+
+    function transfer(address _to, uint _value) public returns (bool) {
+        require(balances[msg.sender] - _value >= 0);
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+        return true;
+    }
+
+    function balanceOf(address _owner) public view returns (uint balance) {
+        return balances[_owner];
+    }
+}
+
+// The idea is to send to any address, a greater number than what the msg.sender has
+// For example, send to "0x0" 21 (if I have 20)
+// Then, 
+// balances[msg.sender] -= _value;
+// uint 20 -= uint 21
+// Since balances are unsigned integers, the balance of each account will always be positive. 
+// Therefore, 20-21 = 2^256 - 1. That's very large.
