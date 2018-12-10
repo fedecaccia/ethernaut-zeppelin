@@ -27,7 +27,7 @@ var Web3 = require('web3');
 // The contract's address
 var vaultAddress = '0xe2c4d226651fc4249e7f6b6387de2fdf4dc0c148';
 // Run local ethereum node on localhost:8546
-var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/20ebf770832a431d85f0fc2b542aba78"));
+var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/"+myToken));
 // Read the storage at the contract's address, in slot 1 (password)
 var password = web3.eth.getStorageAt(vaultAddress, 1);
 password
