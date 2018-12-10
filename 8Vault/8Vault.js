@@ -33,6 +33,9 @@ var vaultAddress = '0xe2c4d226651fc4249e7f6b6387de2fdf4dc0c148';
 var myToken = myToken = fs.readFileSync("../myInfuraToken.txt",'utf8');
 var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/"+myToken));
 // Read the storage at the contract's address, in slot 1 (password)
+// (Data is stored in sequential slots of 32 bytes)
+// slot 0: bool (1 byte)
+// slot 1: bytes_32 (32 bytes)
 var password = web3.eth.getStorageAt(vaultAddress, 1);
 password
 // Display the password as binary
