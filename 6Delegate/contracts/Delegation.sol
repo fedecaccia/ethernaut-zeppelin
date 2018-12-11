@@ -14,7 +14,7 @@ contract Delegation {
 
     function() public {
         if(delegate.delegatecall(msg.data)) {
-        this;
+            this;
         }
     }
 }
